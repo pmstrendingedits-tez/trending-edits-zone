@@ -1,0 +1,51 @@
+# Admin Panel Files — Where They Go
+
+Copy each file into the SAME relative path inside your existing project folder
+(C:\Users\USER\trending-edits-zone). These paths match exactly — just drop them
+in and overwrite.
+
+middleware.js                                  -> project root
+lib/auth.js                                    -> lib/auth.js
+app/api/auth/login/route.js                    -> app/api/auth/login/route.js
+app/api/auth/logout/route.js                   -> app/api/auth/logout/route.js
+app/api/admin/posts/route.js                   -> app/api/admin/posts/route.js
+app/api/admin/posts/[id]/route.js              -> app/api/admin/posts/[id]/route.js
+app/api/admin/categories/route.js              -> app/api/admin/categories/route.js
+app/api/admin/categories/[id]/route.js         -> app/api/admin/categories/[id]/route.js
+app/admin/layout.js                            -> app/admin/layout.js
+app/admin/AdminShell.js                        -> app/admin/AdminShell.js
+app/admin/login/page.js                        -> app/admin/login/page.js
+app/admin/dashboard/page.js                    -> app/admin/dashboard/page.js
+app/admin/posts/page.js                        -> app/admin/posts/page.js
+app/admin/posts/new/page.js                    -> app/admin/posts/new/page.js
+app/admin/posts/[id]/edit/page.js              -> app/admin/posts/[id]/edit/page.js
+app/admin/categories/page.js                   -> app/admin/categories/page.js
+components/AdminSidebar.js                     -> components/AdminSidebar.js
+components/PostForm.js                         -> components/PostForm.js
+scripts/hash-password.js                       -> scripts/hash-password.js
+
+## Required dependencies (make sure these are in package.json)
+
+  "bcryptjs": "2.4.3",
+  "jsonwebtoken": "9.0.2",
+  "jose": "5.6.3",
+  "slugify": "1.6.6"
+
+After copying, run:
+  npm install
+  npm run dev
+
+Then push:
+  git add .
+  git commit -m "Update admin panel"
+  git push
+
+## Required environment variables (Vercel + .env.local)
+
+  ADMIN_USERNAME
+  ADMIN_PASSWORD_HASH   (generate with: node scripts/hash-password.js yourpassword)
+  JWT_SECRET
+
+The admin panel is protected by middleware.js, which checks the JWT cookie
+set on login (app/api/auth/login/route.js) before allowing access to
+/admin/* pages and /api/admin/* routes.
