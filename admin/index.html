@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Trending Edits Zone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100">
+  <main class="mx-auto max-w-7xl px-5 py-8">
+    <div class="flex flex-col justify-between gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-center">
+      <div>
+        <a href="/" class="text-sm text-red-400">← View website</a>
+        <h1 class="mt-2 text-3xl font-black">Admin dashboard</h1>
+        <p class="mt-1 text-sm text-zinc-500">Create and manage your editing asset posts.</p>
+      </div>
+      <button id="logoutBtn" class="hidden rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5">Log out</button>
+    </div>
+
+    <section id="loginSection" class="mx-auto mt-12 max-w-md rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+      <h2 class="text-xl font-bold">Admin login</h2>
+      <p class="mt-2 text-sm text-zinc-500">Use the credentials configured in Vercel environment variables.</p>
+      <form id="loginForm" class="mt-6 space-y-4">
+        <input id="username" required placeholder="Username" class="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+        <input id="password" required type="password" placeholder="Password" class="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+        <button class="w-full rounded-xl bg-red-600 px-4 py-3 font-bold hover:bg-red-500">Login</button>
+        <p id="loginMessage" class="text-sm text-red-300"></p>
+      </form>
+    </section>
+
+    <section id="dashboardSection" class="hidden mt-8 grid gap-8 lg:grid-cols-[1fr_1fr]">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+        <div class="flex items-center justify-between">
+          <h2 id="formHeading" class="text-xl font-bold">Create post</h2>
+          <button id="resetBtn" class="text-sm text-zinc-400 hover:text-white">Clear form</button>
+        </div>
+        <form id="postForm" class="mt-6 space-y-4">
+          <input type="hidden" id="postId">
+          <input id="title" required placeholder="Post title" class="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <input id="category" required placeholder="Category e.g. Alight Motion" class="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+            <input id="tags" placeholder="Tags separated by commas" class="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+          </div>
+          <textarea id="description" required rows="7" placeholder="Common description for this post" class="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500"></textarea>
+          <div>
+            <label class="mb-2 block text-sm text-zinc-400">Thumbnail</label>
+            <input id="imageFile" type="file" accept="image/*" class="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-sm">
+            <input id="thumbnail" placeholder="Or paste an image URL" class="mt-3 w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+            <p id="uploadMessage" class="mt-2 text-xs text-zinc-500"></p>
+          </div>
+          <div>
+            <div class="mb-2 flex items-center justify-between">
+              <label class="text-sm text-zinc-400">Asset links</label>
+              <button type="button" id="addLinkBtn" class="text-sm text-red-400 hover:text-red-300">+ Add link</button>
+            </div>
+            <div id="linksContainer" class="space-y-3"></div>
+          </div>
+          <select id="status" class="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none focus:border-red-500">
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+          <button id="saveBtn" class="w-full rounded-xl bg-red-600 px-4 py-3 font-bold hover:bg-red-500">Save post</button>
+          <p id="formMessage" class="text-sm"></p>
+        </form>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold">Existing posts</h2>
+          <button id="refreshBtn" class="text-sm text-red-400 hover:text-red-300">Refresh</button>
+        </div>
+        <div id="adminPosts" class="mt-6 space-y-3"></div>
+      </div>
+    </section>
+  </main>
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trending Edits Zone - editing assets, project files, presets, templates and tutorials.">
+  <title>Trending Edits Zone | Editing Assets</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/config.js"></script>
+</head>
+<body class="min-h-screen text-zinc-100">
+  <header class="border-b border-white/10 bg-zinc-950/80 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
+      <a href="/" class="text-xl font-black tracking-tight"><span class="text-red-500">Trending</span> Edits Zone</a>
+      <nav class="flex items-center gap-5 text-sm text-zinc-300">
+        <a href="#assets" class="hover:text-white">Assets</a>
+        <a href="/admin" class="hover:text-white">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="border-b border-white/10 bg-gradient-to-b from-red-950/30 to-zinc-950">
+      <div class="mx-auto max-w-7xl px-5 py-20 md:py-28">
+        <p class="text-sm font-bold uppercase tracking-[0.25em] text-red-400">Creative resources for editors</p>
+        <h1 class="mt-5 max-w-4xl text-4xl font-black tracking-tight text-white md:text-7xl">Discover editing assets for your next viral edit.</h1>
+        <p class="mt-6 max-w-2xl text-base leading-8 text-zinc-400 md:text-lg">Find project files, presets, templates, video resources and editing tutorials in one simple place.</p>
+        <a href="#assets" class="mt-8 inline-flex rounded-xl bg-red-600 px-5 py-3 font-bold text-white hover:bg-red-500">Explore assets ↓</a>
+      </div>
+    </section>
+
+    <section id="assets" class="mx-auto max-w-7xl px-5 py-12 md:py-16">
+      <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+        <div>
+          <p class="text-sm font-semibold text-red-400">Latest uploads</p>
+          <h2 class="mt-2 text-3xl font-black text-white">Editing asset library</h2>
+        </div>
+        <div class="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
+          <input id="searchInput" type="search" placeholder="Search assets..." class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none placeholder:text-zinc-500 focus:border-red-500 sm:w-64">
+          <select id="categoryFilter" class="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-sm outline-none focus:border-red-500">
+            <option value="">All categories</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="loadingState" class="py-16 text-center text-zinc-500">Loading assets...</div>
+      <div id="errorState" class="hidden rounded-2xl border border-red-500/20 bg-red-500/10 p-6 text-red-300">Could not load assets. Please try again later.</div>
+      <div id="postsGrid" class="grid gap-6 py-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="emptyState" class="hidden py-16 text-center text-zinc-500">No matching assets found.</div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 px-5 py-8 text-center text-sm text-zinc-500">
+    © <span id="year"></span> Trending Edits Zone. All rights reserved.
+  </footer>
+  <script>document.querySelector("#year").textContent = new Date().getFullYear();</script>
+  <script src="/assets/js/blog.js"></script>
+</body>
+</html>
