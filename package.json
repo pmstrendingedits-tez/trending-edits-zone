@@ -2,14 +2,7 @@
   "name": "trending-edits-zone",
   "version": "1.0.0",
   "private": true,
-  "description": "Trending Edits Zone - Editing assets and tutorial blog",
   "scripts": {
     "dev": "vercel dev"
-  },
-  "dependencies": {
-    "jose": "^6.1.0"
-  },
-  "devDependencies": {
-    "vercel": "^48.0.0"
   }
 }
